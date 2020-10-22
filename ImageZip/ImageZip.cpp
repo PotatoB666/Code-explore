@@ -6,7 +6,7 @@ using namespace std;
 
 int length(int n)
 {
-	int l = ceil(log2(n));
+    int l = ceil(log2(n));
     return l==0?1:l;
 }
 
@@ -32,45 +32,45 @@ void dyn(int *m,int n,int* t,int *s)
             }
         }
         s[i] = minI;
-		t[i] = minT;
-		cout << s[i] << " ";
+        t[i] = minT;
+        cout << s[i] << " ";
     }
 }
 
 void printL(int* m,int a,int b)
 {
-	for(int i = a;i<=b;i++)
-	{
-		cout << m[i] << " ";
-	}
+    for(int i = a;i<=b;i++)
+    {
+        cout << m[i] << " ";
+    }
 }
 
 void print(int* m,int n,int *s)
 {
-	if(s[n]==n)
-	{
-		printL(m,0,n);
-		return;
-	}
-	print(m,n-s[n],s);
-	cout << "|";
-	printL(m,n-s[n]+1,n);
+    if(s[n]==n)
+    {
+        printL(m,0,n);
+        return;
+    }
+    print(m,n-s[n],s);
+    cout << "|";
+    printL(m,n-s[n]+1,n);
 }
 
 int main(int argc,char* argv[])
 {
-	int l;
-	cin >> l;
+    int l;
+    cin >> l;
     int* m = new int[l];//原始图形序列
     int* s = new int[l];//最佳位置储存
     int* t = new int[l];//最优存储大小
     srand(time(NULL));
     cout << "序列:";
     // 数据构造
-	for(int i = 0;i<l;i++)
-	{
-		cin >> m[i];
-	}
+    for(int i = 0;i<l;i++)
+    {
+        cin >> m[i];
+    }
     for(int i = 0;i<l;i++)
     {
         cout << m[i] << " ";
@@ -78,7 +78,7 @@ int main(int argc,char* argv[])
     cout << endl;
     dyn(m,l-1,t,s); //动态规划入口
     cout << "最短存储长度:" << t[l-1] << endl;
-	cout << "分割情况:" << endl;
-	print(m,l-1,s);
+    cout << "分割情况:" << endl;
+    print(m,l-1,s);
     return 0;
 }
