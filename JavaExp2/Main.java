@@ -11,5 +11,10 @@ public class Main{
         Frog f = new Frog();
         f.mood = "平静";
         f.sayHello();
+
+        c.walk();
+        d.walk();
+        f.walk();
+        f.swim();
     }
 }
