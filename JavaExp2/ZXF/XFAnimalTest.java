@@ -2,12 +2,17 @@ abstract class Animal{
     protected String breed;
     protected String sex;
     int age;
+    public static int count = 0;
+    public static final double PI = 3.14;
 
-    Animal(){}
+    Animal(){
+        Animal.count ++ ;
+    }
     Animal(String b,String s,int a){
         this.breed = b;
         this.sex = s;
         this.age = a;
+        Animal.count ++ ;
     }
     abstract void move();
     public String toString(){
@@ -26,6 +31,11 @@ abstract class Animal{
     String add(String a,int b) { return a+b; }
 
     abstract void sayHello();
+
+    public static void area(int r){
+        double s = PI * r * r;
+        System.out.println("圆的面积是:"+s);
+    }
 }
 
 class Cat extends Animal{
@@ -79,7 +89,7 @@ class Bird extends Animal{
     }
 }
 
-public class AnimalTest{
+public class XFAnimalTest{
     public static void main(String[] args) {
         //测试
         Cat c = new Cat("哺乳","雌",6,4);
@@ -110,5 +120,13 @@ public class AnimalTest{
         System.out.println("b.add(int,int) = "+rb3);
         System.out.println("b.add(String,int) = "+rb4);
         b.sayHello();
+
+        Cat c2 = new Cat();
+        Cat c3 = new Cat();
+        Bird b2 = new Bird();
+        Bird b3 = new Bird();
+        System.out.println("总共的对象数是:"+Animal.count);
+
+        Animal.area(10);
     }
 }
