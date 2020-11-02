@@ -1,11 +1,11 @@
 //接口
 interface LandAnimal{
-	abstract int getNumberOfLegs();
+	public abstract int getNumberOfLegs();
 }
 
 interface WaterAnimal{
-	abstract void getGillFlag();
-	abstract void getLaysEggs();
+	public abstract void getGillFlag();
+	public abstract void getLaysEggs();
 }
 
 //父类
