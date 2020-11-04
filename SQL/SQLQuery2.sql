@@ -1,9 +1,9 @@
---·ÖÀà±í
+--åˆ†ç±»è¡¨
 create table BookClass (
 	classNo char(3) constraint PK_BookClass_classNO primary key,
 	className char(20) not null constraint UK_BookClass_className unique
 );
---Í¼Êé±í
+--å›¾ä¹¦è¡¨
 create table Book (
 	bookNO char(10) constraint PK_Book_bookNO primary key,
 	classNO char(3) constraint FK_Book_classNO foreign key references BookClass(classNO),
@@ -16,7 +16,7 @@ create table Book (
 	shopDate date,
 	shopNum int
 );
---¶ÁÕß±í
+--è¯»è€…è¡¨
 create table Reader (
 	readerNO char(8) constraint PK_Reader_readerNO primary key,
 	readerName char(8),
@@ -25,7 +25,7 @@ create table Reader (
 	workUnit char(50),
 	borrowCount smallint not null
 );
---½èÔÄ±í
+--å€Ÿé˜…è¡¨
 create table Borrow (
 	readerNO char(8),
 	bookNO char(10),
@@ -36,33 +36,33 @@ create table Borrow (
 	constraint FK_Borrow_readerNO foreign key(readerNO) references Reader(readerNO),
 	constraint FK_Borrow_bookNO foreign key(bookNO) references Book(bookNO),
 );
---·ÖÀà±í²åÈë
-insert into BookClass values ('001','¾­¼ÃÀà');
-insert into BookClass values ('002','ÍâÓïÀà');
-insert into BookClass values ('003','¼ÆËã»úÀà');
---Í¼Êé±í²åÈë
-insert into Book values ('B200101001','001','ÕþÖÎ¾­¼ÃÑ§','ËÎÌÎ','ÖÐ¹úÈËÃñ´óÑ§³ö°æÉç','P1991010100010001',31.8,'19910101','19950111',100);
-insert into Book values ('B200201001','002','´óÑ§Ó¢Óï','Ö£Ê÷ÌÄ','ÍâÓï½ÌÑ§ÓëÑÐ¾¿³ö°æÉç','P1992010100010001',35.2,'19920101','19960111',130);
-insert into Book values ('B200301001','003','Êý¾Ý¿âÏµÍ³Ô­Àí','Îâ¾©»Û','Çå»ª´óÑ§³ö°æÉç','P1993010100010001',58.2,'19930101','19950111',160);
-insert into Book values ('B200101002','001','Î¢¹Û¾­¼ÃÑ§','ÕÅÈï','¸ßµÈ½ÌÓý³ö°æÉç','P1991010100010002',41.8,'19910102','19950112','110');
-insert into Book values ('B200101003','001','ºê¹Û¾­¼ÃÑ§','Ô¬Ã÷Ê¥','ÖÐ¹ú²Æ¾­¾­¼Ã³ö°æÉç','P1991010100010003',51.8,'19910103','19950113',120);
-insert into Book values ('B200201002','002','ÉÌÎñÓ¢Óï','ÂíÉýìÇ','ÉÏº£ÍâÓïÑ§Ôº³ö°æÉç','P1992010100010002',45.2,'19920102','19960112',140);
-insert into Book values ('B200201003','002','ÉÌÎñÓ¢Óï2','½­Óî¼Ñ','Î÷°²½»Í¨´óÑ§³ö°æÉç','P1992010100010003',55.2,'19920103','19960113',150);
-insert into Book values ('B200301002','003','×éÍø¼¼Êõ','ÍòÕ÷','Õã½­´óÑ§³ö°æÉç','P1993010100010002',38.2,'19930102','19950112',170);
-insert into Book values ('B200301003','003','ÈË¹¤ÖÇÄÜ','·ÑÏèÁÖ','µç×Ó¹¤Òµ³ö°æÉç','P1993010100010003',43.2,'19930103','19950113',180);
-insert into Book values ('B200301004','003','Ëã·¨Éè¼ÆÓë·ÖÎö','³Â»ÛÄÏ','¿ÆÑ§³ö°æÉç','P1993010100010004',58.2,'19930104','19950114',190);
---¶ÁÕß±í²åÈë
-insert into Reader values ('R2005001','ÕÅÐ¡¾ê','F','412723199001014000','Í³Ò»¹É·ÝÓÐÏÞ¹«Ë¾',0);
-insert into Reader values ('R2006001','Áõ·ï','F','412723199003014000','ÁªºÏ¹É·ÝÓÐÏÞ¹«Ë¾',0);
-insert into Reader values ('R2007001','¸ß´úÅô','M','412723199005014000','ºé¶¼¹É·ÝÓÐÏÞ¹«Ë¾',0);
-insert into Reader values ('R2008001','³Â»Ô','M','412723199111014000','ÄÏ²ýÊÐµçÄÔÑÐÖÆ¹«Ë¾',0);
-insert into Reader values ('R2009001','Àîºç±ù','F','412723199208014000','¸»Ê¿¿µ¿Æ¼¼¼¯ÍÅ',0);
-insert into Reader values ('R2005002','ÕÅÂ¶','F','412723199002014000','ÐËÂ¡¹É·ÝÓÐÏÞ¹«Ë¾',0);
-insert into Reader values ('R2006002','Ó÷×ÔÇ¿','M','412723199004014000','ÍòÊÂ´ï¹É·ÝÓÐÏÞ¹«Ë¾',0);
-insert into Reader values ('R2007002','ÕÅÏþÃ·','F','412723199112014000','ÊÀ½ç¼¼Êõ¿ª·¢¹«Ë¾',0);
-insert into Reader values ('R2008002','ÕÅÁ¼','M','412723199110014000','ÉÏº£ÉúÎïÑÐ¾¿ÊÒ',0);
-insert into Reader values ('R2009002','º«¸£Æ½','M','412723199209014000','ºÏÉúÔªÓÐÏÞ¹«Ë¾',0);
---½èÔÄ±í²åÈë
+--åˆ†ç±»è¡¨æ’å…¥
+insert into BookClass values ('001','ç»æµŽç±»');
+insert into BookClass values ('002','å¤–è¯­ç±»');
+insert into BookClass values ('003','è®¡ç®—æœºç±»');
+--å›¾ä¹¦è¡¨æ’å…¥
+insert into Book values ('B200101001','001','æ”¿æ²»ç»æµŽå­¦','å®‹æ¶›','ä¸­å›½äººæ°‘å¤§å­¦å‡ºç‰ˆç¤¾','P1991010100010001',31.8,'19910101','19950111',100);
+insert into Book values ('B200201001','002','å¤§å­¦è‹±è¯­','éƒ‘æ ‘æ£ ','å¤–è¯­æ•™å­¦ä¸Žç ”ç©¶å‡ºç‰ˆç¤¾','P1992010100010001',35.2,'19920101','19960111',130);
+insert into Book values ('B200301001','003','æ•°æ®åº“ç³»ç»ŸåŽŸç†','å´äº¬æ…§','æ¸…åŽå¤§å­¦å‡ºç‰ˆç¤¾','P1993010100010001',58.2,'19930101','19950111',160);
+insert into Book values ('B200101002','001','å¾®è§‚ç»æµŽå­¦','å¼ è•Š','é«˜ç­‰æ•™è‚²å‡ºç‰ˆç¤¾','P1991010100010002',41.8,'19910102','19950112','110');
+insert into Book values ('B200101003','001','å®è§‚ç»æµŽå­¦','è¢æ˜Žåœ£','ä¸­å›½è´¢ç»ç»æµŽå‡ºç‰ˆç¤¾','P1991010100010003',51.8,'19910103','19950113',120);
+insert into Book values ('B200201002','002','å•†åŠ¡è‹±è¯­','é©¬å‡çƒ¨','ä¸Šæµ·å¤–è¯­å­¦é™¢å‡ºç‰ˆç¤¾','P1992010100010002',45.2,'19920102','19960112',140);
+insert into Book values ('B200201003','002','å•†åŠ¡è‹±è¯­2','æ±Ÿå®‡ä½³','è¥¿å®‰äº¤é€šå¤§å­¦å‡ºç‰ˆç¤¾','P1992010100010003',55.2,'19920103','19960113',150);
+insert into Book values ('B200301002','003','ç»„ç½‘æŠ€æœ¯','ä¸‡å¾','æµ™æ±Ÿå¤§å­¦å‡ºç‰ˆç¤¾','P1993010100010002',38.2,'19930102','19950112',170);
+insert into Book values ('B200301003','003','äººå·¥æ™ºèƒ½','è´¹ç¿”æž—','ç”µå­å·¥ä¸šå‡ºç‰ˆç¤¾','P1993010100010003',43.2,'19930103','19950113',180);
+insert into Book values ('B200301004','003','ç®—æ³•è®¾è®¡ä¸Žåˆ†æž','é™ˆæ…§å—','ç§‘å­¦å‡ºç‰ˆç¤¾','P1993010100010004',58.2,'19930104','19950114',190);
+--è¯»è€…è¡¨æ’å…¥
+insert into Reader values ('R2005001','å¼ å°å¨Ÿ','F','412723199001014000','ç»Ÿä¸€è‚¡ä»½æœ‰é™å…¬å¸',0);
+insert into Reader values ('R2006001','åˆ˜å‡¤','F','412723199003014000','è”åˆè‚¡ä»½æœ‰é™å…¬å¸',0);
+insert into Reader values ('R2007001','é«˜ä»£é¹','M','412723199005014000','æ´ªéƒ½è‚¡ä»½æœ‰é™å…¬å¸',0);
+insert into Reader values ('R2008001','é™ˆè¾‰','M','412723199111014000','å—æ˜Œå¸‚ç”µè„‘ç ”åˆ¶å…¬å¸',0);
+insert into Reader values ('R2009001','æŽè™¹å†°','F','412723199208014000','å¯Œå£«åº·ç§‘æŠ€é›†å›¢',0);
+insert into Reader values ('R2005002','å¼ éœ²','F','412723199002014000','å…´éš†è‚¡ä»½æœ‰é™å…¬å¸',0);
+insert into Reader values ('R2006002','å–»è‡ªå¼º','M','412723199004014000','ä¸‡äº‹è¾¾è‚¡ä»½æœ‰é™å…¬å¸',0);
+insert into Reader values ('R2007002','å¼ æ™“æ¢…','F','412723199112014000','ä¸–ç•ŒæŠ€æœ¯å¼€å‘å…¬å¸',0);
+insert into Reader values ('R2008002','å¼ è‰¯','M','412723199110014000','ä¸Šæµ·ç”Ÿç‰©ç ”ç©¶å®¤',0);
+insert into Reader values ('R2009002','éŸ©ç¦å¹³','M','412723199209014000','åˆç”Ÿå…ƒæœ‰é™å…¬å¸',0);
+--å€Ÿé˜…è¡¨æ’å…¥
 insert into Borrow values ('R2005001','B200101001','20110901','20111001',null);
 insert into Borrow values ('R2006001','B200101001','20110907','20111007','20111005');
 insert into Borrow values ('R2007001','B200201001','20110913','20111013','20111010');
@@ -83,9 +83,9 @@ insert into Borrow values ('R2007001','B200201003','20110915','20111015','201110
 insert into Borrow values ('R2009002','B200201001','20110916','20111016','20111014');
 insert into Borrow values ('R2007002','B200201002','20110917','20111017','20111014');
 insert into Borrow values ('R2007002','B200201003','20110917','20111017','20111014');
---²éÑ¯
-select readerName,workUnit,identitycard from Reader where SUBSTRING(identitycard,7,14)>='19910101' and substring(identitycard,7,14)<='19911231';
-select readerNO,readerName,sex from Reader where workUnit='¸»Ê¿¿µ¿Æ¼¼¼¯ÍÅ';
-select * from Book where CHARINDEX('Êý¾Ý¿â',bookName)!=0;
-select bookNO,shopDate from Book where authorName='Ô¬Ã÷Ê¥' and price >= 40.00;
+--æŸ¥è¯¢
+select readerName,workUnit,identitycard from Reader where SUBSTRING(identitycard,7,8)>='19910101' and substring(identitycard,7,8)<='19911231';
+select readerNO,readerName,sex from Reader where workUnit='å¯Œå£«åº·ç§‘æŠ€é›†å›¢';
+select * from Book where CHARINDEX('æ•°æ®åº“',bookName)!=0;
+select bookNO,shopDate from Book where authorName='è¢æ˜Žåœ£' and price >= 40.00;
 select bookNO,publishingDate,shopDate,bookName from Book where shopDate>='1995-01-01' and shopDate<='1996-12-31' order by shopDate asc;
