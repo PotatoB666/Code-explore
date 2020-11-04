@@ -19,7 +19,8 @@ create table SC (
 	Sno char(7) foreign key references Student(Sno),
 	Cno char(10) foreign key references Course(Cno),
 	Grade int check(Grade>=0 and Grade<=100),
-	XKLB char(4) null
+	XKLB char(4) null,
+	primary key(Sno,Cno)
 );
 
 --学生表数据插入
