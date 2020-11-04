@@ -56,3 +56,4 @@ insert into SC values ('9531102','C05',85,'必修');
 update Student set Sdept='信息系' where Sname='王敏';
 update Course set Cname='数据库原理与应用' where Cname='数据库基础';
 delete from SC where Grade<40;
+--
