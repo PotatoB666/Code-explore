@@ -1,58 +1,58 @@
 create database DB3;
---Ñ§Éú±í´´½¨
+--å­¦ç”Ÿè¡¨åˆ›å»º
 create table Student (
 	Sno char(7) primary key,
 	Sname char(10) not null,
-	Ssex char(2) check(Ssex='ÄĞ' or Ssex='Å®'),
+	Ssex char(2) check(Ssex='ç”·' or Ssex='å¥³'),
 	Sage smallint check(Sage>=15 and Sage<=45),
-	Sdept char(20) default '¼ÆËã»úÏµ'
+	Sdept char(20) default 'è®¡ç®—æœºç³»'
 );
---¿Î³ÌĞÅÏ¢±í´´½¨
+--è¯¾ç¨‹ä¿¡æ¯è¡¨åˆ›å»º
 create table Course (
 	Cno char(10) primary key,
 	Cname char(20) not null,
 	Ccredit int check(Ccredit>0),
 	Semster int check(Semster>0)
 );
---Ñ§ÉúÑ¡¿Î±í´´½¨
+--å­¦ç”Ÿé€‰è¯¾è¡¨åˆ›å»º
 create table SC (
 	Sno char(7) foreign key references Student(Sno),
 	Cno char(10) foreign key references Course(Cno),
 	Grade int check(Grade>=0 and Grade<=100),
-	XKLB char(4) null,
+	XKLB char(4) null
 );
 
---Ñ§Éú±íÊı¾İ²åÈë
-insert into Student values ('9512101','ÀîÓÂ','ÄĞ',19,'¼ÆËã»úÏµ');
-insert into Student values ('9512102','Áõ³¿','ÄĞ',20,'¼ÆËã»úÏµ');
-insert into Student values ('9512103','ÍõÃô','Å®',20,'¼ÆËã»úÏµ');
-insert into Student values ('9521101','ÕÅÁ¢','ÄĞ',22,'ĞÅÏ¢Ïµ');
-insert into Student values ('9521102','Îâ±ö','Å®',21,'ĞÅÏ¢Ïµ');
-insert into Student values ('9521103','ÕÅº£','ÄĞ',20,'ĞÅÏ¢Ïµ');
-insert into Student values ('9531101','Ç®Ğ¡Æ½','Å®',18,'ÊıÑ§Ïµ');
-insert into Student values ('9531102','Íõ´óÁ¦','ÄĞ',19,'ÊıÑ§Ïµ');
---¿Î³Ì±í²åÈë
-insert into Course values ('C01','¼ÆËã»úÎÄ»¯»ù´¡',3,1);
+--å­¦ç”Ÿè¡¨æ•°æ®æ’å…¥
+insert into Student values ('9512101','æå‹‡','ç”·',19,'è®¡ç®—æœºç³»');
+insert into Student values ('9512102','åˆ˜æ™¨','ç”·',20,'è®¡ç®—æœºç³»');
+insert into Student values ('9512103','ç‹æ•','å¥³',20,'è®¡ç®—æœºç³»');
+insert into Student values ('9521101','å¼ ç«‹','ç”·',22,'ä¿¡æ¯ç³»');
+insert into Student values ('9521102','å´å®¾','å¥³',21,'ä¿¡æ¯ç³»');
+insert into Student values ('9521103','å¼ æµ·','ç”·',20,'ä¿¡æ¯ç³»');
+insert into Student values ('9531101','é’±å°å¹³','å¥³',18,'æ•°å­¦ç³»');
+insert into Student values ('9531102','ç‹å¤§åŠ›','ç”·',19,'æ•°å­¦ç³»');
+--è¯¾ç¨‹è¡¨æ’å…¥
+insert into Course values ('C01','è®¡ç®—æœºæ–‡åŒ–åŸºç¡€',3,1);
 insert into Course values ('C02','VB',2,3);
-insert into Course values ('C03','¼ÆËã»úÍøÂç',4,7);
-insert into Course values ('C04','Êı¾İ¿â»ù´¡',6,6);
-insert into Course values ('C05','¸ßµÈÊıÑ§',8,2);
-insert into Course values ('C06','Êı¾İ½á¹¹',5,4);
---Ñ¡¿Î±í²åÈë
-insert into SC values ('9512101','C01',90,'±ØĞŞ');
-insert into SC values ('9512101','C02',86,'Ñ¡ĞŞ');
-insert into SC values ('9512101','C06',62,'±ØĞŞ');
-insert into SC values ('9512102','C02',78,'Ñ¡ĞŞ');
-insert into SC values ('9512102','C04',66,'±ØĞŞ');
-insert into SC values ('9512102','C01',82,'Ñ¡ĞŞ');
-insert into SC values ('9512102','C05',92,'±ØĞŞ');
-insert into SC values ('9512102','C06',50,'±ØĞŞ');
-insert into SC values ('9512103','C02',68,'Ñ¡ĞŞ');
-insert into SC values ('9512103','C06',62,'±ØĞŞ');
-insert into SC values ('9531101','C01',80,'Ñ¡ĞŞ');
-insert into SC values ('9531101','C05',95,'±ØĞŞ');
-insert into SC values ('9531102','C05',85,'±ØĞŞ');
---Êı¾İ²Ù×İ
-update Student set Sdept='ĞÅÏ¢Ïµ' where Sname='ÍõÃô';
-update Course set Cname='Êı¾İ¿âÔ­ÀíÓëÓ¦ÓÃ' where Cname='Êı¾İ¿â»ù´¡';
+insert into Course values ('C03','è®¡ç®—æœºç½‘ç»œ',4,7);
+insert into Course values ('C04','æ•°æ®åº“åŸºç¡€',6,6);
+insert into Course values ('C05','é«˜ç­‰æ•°å­¦',8,2);
+insert into Course values ('C06','æ•°æ®ç»“æ„',5,4);
+--é€‰è¯¾è¡¨æ’å…¥
+insert into SC values ('9512101','C01',90,'å¿…ä¿®');
+insert into SC values ('9512101','C02',86,'é€‰ä¿®');
+insert into SC values ('9512101','C06',62,'å¿…ä¿®');
+insert into SC values ('9512102','C02',78,'é€‰ä¿®');
+insert into SC values ('9512102','C04',66,'å¿…ä¿®');
+insert into SC values ('9512102','C01',82,'é€‰ä¿®');
+insert into SC values ('9512102','C05',92,'å¿…ä¿®');
+insert into SC values ('9512102','C06',50,'å¿…ä¿®');
+insert into SC values ('9512103','C02',68,'é€‰ä¿®');
+insert into SC values ('9512103','C06',62,'å¿…ä¿®');
+insert into SC values ('9531101','C01',80,'é€‰ä¿®');
+insert into SC values ('9531101','C05',95,'å¿…ä¿®');
+insert into SC values ('9531102','C05',85,'å¿…ä¿®');
+--æ•°æ®æ“çºµ
+update Student set Sdept='ä¿¡æ¯ç³»' where Sname='ç‹æ•';
+update Course set Cname='æ•°æ®åº“åŸç†ä¸åº”ç”¨' where Cname='æ•°æ®åº“åŸºç¡€';
 delete from SC where Grade<40;
