@@ -85,8 +85,15 @@ class Dog extends Animal implements LandAnimal{
 	}
 	@Override
 	void printInfo(){
-		System.out.println("狗是哺乳动物");
-		System.out.println("狗是肉食动物");
+		if(this.mammal)
+			System.out.println("狗是哺乳动物");
+		else
+			System.out.println("狗不是哺乳动物");
+		
+		if(this.canivorious)
+			System.out.println("狗是肉食动物");
+		else
+			System.out.println("狗不是肉食动物");
 	}
 	@Override
 	public int getNumberOfLegs() {
@@ -120,8 +127,15 @@ class Cat extends Animal implements LandAnimal{
 	}
 	@Override
 	void printInfo(){
-		System.out.println("猫是哺乳动物");
-		System.out.println("猫是肉食动物");
+		if(this.mammal)
+			System.out.println("猫是哺乳动物");
+		else
+			System.out.println("猫不是哺乳动物");
+		
+		if(this.canivorious)
+			System.out.println("猫是肉食动物");
+		else
+			System.out.println("猫不是肉食动物");
 	}
 	@Override
 	public int getNumberOfLegs() {
@@ -154,8 +168,15 @@ class Frog extends Animal implements WaterAnimal,LandAnimal{
 	}
 	@Override
 	void printInfo(){
-		System.out.println("青蛙不是哺乳动物");
-		System.out.println("青蛙不是肉食动物");
+		if(this.mammal)
+			System.out.println("青蛙是哺乳动物");
+		else
+			System.out.println("青蛙不是哺乳动物");
+		
+		if(this.canivorious)
+			System.out.println("青蛙是肉食动物");
+		else
+			System.out.println("青蛙不是肉食动物");
 	}
 	@Override
 	public int getNumberOfLegs() {
