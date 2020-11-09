@@ -9,7 +9,7 @@ interface WaterAnimal{
 	void getLaysEggs();
 }
 
-//父类
+//父类：动物
 abstract class Animal{
 	//属性
 	String name;//动物的名字
@@ -58,7 +58,7 @@ abstract class Animal{
 	abstract void printInfo();
 }
 
-//子类:动物
+//子类:狗
 class Dog extends Animal implements LandAnimal{
 	//构造方法（两个）
 	Dog(){
