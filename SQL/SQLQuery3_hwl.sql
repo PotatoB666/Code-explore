@@ -139,11 +139,14 @@ select Reader.readerNO,Reader.readerName,Book.bookName,Borrow.borrowDate
 from Reader,Borrow,Book 
 where Reader.readerNO=Borrow.readerNO and Book.bookNO=Borrow.bookNO and Book.classNO='002';
 -- 15
-select Borrow.readerNO 
-from Borrow 
-group by Borrow.readerNO 
-having count(Borrow.bookNO)>=3 
-order by Borrow.readerNO;
+select Reader.readerNO,Reader.readerName,Borrow.bookNO,Book.bookName
+from 
+	(select Borrow.readerNO 
+	from Borrow 
+	group by Borrow.readerNO 
+	having count(Borrow.bookNO)>=3) as t,Borrow,Reader,Book
+where Borrow.bookNO=Book.bookNO and Reader.readerNO=t.readerNO and t.readerNO=Borrow.readerNO 
+order by Reader.readerNO;
 -- 16
 select Reader.readerNO,Reader.readerName,SUBSTRING(Reader.identitycard,7,6) 
 from (
