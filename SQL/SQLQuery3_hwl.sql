@@ -70,7 +70,7 @@ where Borrow.bookNO=Book.bookNO and Borrow.readerNO=Reader.readerNO and Reader.r
 -- 3
 select Reader.readerNO,Reader.readerName,Book.bookName,Borrow.borrowDate,Borrow.returnDate 
 from Borrow,Book,Reader 
-where Borrow.bookNO=Book.bookNO and Reader.readerNO=Borrow.readerNO and Borrow.returnDate is null;
+where Borrow.bookNO=Book.bookNO and Reader.readerNO=Borrow.readerNO and Borrow.returnDate is null and Reader.workUnit='洪都股份有限公司';
 -- 4
 select Reader.readerNO,Reader.readerName,Book.bookName,Borrow.borrowDate,Borrow.returnDate 
 from Reader,Book,Borrow 
