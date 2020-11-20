@@ -1,20 +1,25 @@
 ﻿#include <iostream>
 #define MAXN 101 //数组长度
 #define MAXUINT 0xffffffff //最大无符号整数
-#define Max(a,b,c) a > b ? (a > c ? a : c) : (b > c ? b : c) //返回三个数字中最大数
 
 using namespace std;
-int t[MAXN]; //每个任务所需要的时间数,0号单元不使用
-int m[MAXN]; //每个机器累计的时间,0号单元不使用
+unsigned int t[MAXN]; //每个任务所需要的时间数,0号单元不使用
+unsigned int m[MAXN]; //每个机器累计的时间,0号单元不使用
 unsigned int minTime = MAXUINT; //记录最小的时间
-int n, k; //n为任务数，k为机器的数量
+unsigned int n, k; //n为任务数，k为机器的数量
 
 void TraceBack(int task)
 {
 	if (task > n)
 	{
-		//统计三个机器中最大的时间数
-		int u = Max(m[1], m[2], m[3]);
+		//统计所有机器中最大的时间数
+		int u = 0;
+		for (int i = 1; i <= k; i++)
+		{
+			if (m[i] > u)
+				u = m[i];
+		}
+
 		if (u < minTime)
 			minTime = u;
 		return;
@@ -36,6 +41,10 @@ void TraceBack(int task)
 */
 int main()
 {
+	int a, b, c;
+	a = 10;
+	b = 0;
+	c = 0;
 	cin >> n >> k;
 	for (int i = 1; i <= n; i++)
 		cin >> t[i];
