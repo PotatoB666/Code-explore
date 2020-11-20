@@ -41,10 +41,6 @@ void TraceBack(int task)
 */
 int main()
 {
-	int a, b, c;
-	a = 10;
-	b = 0;
-	c = 0;
 	cin >> n >> k;
 	for (int i = 1; i <= n; i++)
 		cin >> t[i];
