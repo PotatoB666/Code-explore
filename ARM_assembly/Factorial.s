@@ -6,7 +6,7 @@
 .global main
 
 main:
-    ldr r0,=input_string           @等价于scanf("%d",&input_n)
+    ldr r0,=input_string          @等价于scanf("%d",&input_n)
     ldr r1,=input_n
     bl scanf
 
@@ -26,7 +26,7 @@ main:
 
 _factor:
     cmp r0,#1
-    bne next                     @if(r0==1) { return 1; }
+    bne next                      @if(r0==1) { return 1; }
     push {r0} @堆栈保存结果        @等价于return 1
     mov pc,lr
     next:
