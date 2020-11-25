@@ -127,7 +127,7 @@ from (
 ) as t,Reader 
 where Reader.readerNO=t.rn;
 -- 13
-select Reader.readerNO,Reader.readerName,Reader.workUnit 
+select distinct Reader.readerNO,Reader.readerName,Reader.workUnit 
 from Reader,Borrow 
 where Borrow.bookNO in (
 	select Borrow.bookNO 
