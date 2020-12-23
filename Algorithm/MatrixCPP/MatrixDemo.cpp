@@ -169,6 +169,8 @@ public:
 	}
 	int Length()
 	{
+		int x = up < 0 ? -up : up;
+		int y = down < 0 ? -down : down;
 		int l = 0;
 		if (up < 0)
 		{
@@ -179,7 +181,7 @@ public:
 			l += 1;
 			return l;
 		}
-		l += (int)(log10(up) + 1) + 1 + (int)(log10(down) + 1);
+		l += (int)(log10(x) + 1) + 1 + (int)(log10(y) + 1);
 		return l;
 	}
 	~Fraction() {  }
@@ -262,15 +264,21 @@ public:
 				}
 			}
 			Fraction ft = (Fraction(1) - base[i][i_last]) / base[i][i_last];
+			cout << "r" << i+1 << "=" << "r" << i+1 << "+" << "r" << i+1 << "*" ;
+			ft.Print();
+			cout << endl;
 			Add(i, i, ft);
+			Print();
 			i++;
 		}
+		Sort();
 	}
 	void Sort()
 	{
 		int* first_set = new int[r];
 		for (int i = 0; i < r; i++)
 		{
+			first_set[i] = c + 1;
 			for (int j = 0; j < c; j++)
 			{
 				if (base[i][j] != Fraction(0))
