@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <cmath>
 using namespace std;
 int gcd(int a, int b)
@@ -17,7 +17,7 @@ int gcd(int a, int b)
 		return a;
 	return gcd(b, a % b);
 }
-//·ÖÊýÀà
+//Â·Ã–ÃŠÃ½Ã€Ã 
 class Fraction
 {
 	int up, down;
@@ -186,13 +186,13 @@ public:
 	}
 	~Fraction() {  }
 };
-//¾ØÕóÀà
+//Â¾Ã˜Ã•Ã³Ã€Ã 
 class Matrix
 {
 public:
 	int r, c;
 	Fraction** base;
-	Matrix(int r,int c)
+	Matrix(int r, int c)
 	{
 		this->r = r;
 		this->c = c;
@@ -202,7 +202,7 @@ public:
 	}
 	void Add(int rd, int rs, Fraction scale)
 	{
-		for(int i = 0;i<this->c;i++)
+		for (int i = 0; i < this->c; i++)
 		{
 			Fraction t = this->base[rs][i] * scale;
 			this->base[rd][i] = this->base[rd][i] + t;
@@ -228,7 +228,7 @@ public:
 			for (int j = 0; j < r; j++)
 			{
 				for (int k = 0; k < c; k++) {
-					if (!(base[j][k] == Fraction(0)))
+					if (base[j][k] != Fraction(0))
 					{
 						nowLast = k;
 						if (j == i)
@@ -263,11 +263,13 @@ public:
 					Print();
 				}
 			}
-			Fraction ft = (Fraction(1) - base[i][i_last]) / base[i][i_last];
-			cout << "r" << i+1 << "=" << "r" << i+1 << "+" << "r" << i+1 << "*" ;
-			ft.Print();
-			cout << endl;
-			Add(i, i, ft);
+			if (i_last < c && base[i][i_last] != 1) {
+				Fraction ft = (Fraction(1) - base[i][i_last]) / base[i][i_last];
+				cout << "r" << i + 1 << "=" << "r" << i + 1 << "+" << "r" << i + 1 << "*";
+				ft.Print();
+				cout << endl;
+				Add(i, i, ft);
+			}
 			Print();
 			i++;
 		}
@@ -290,11 +292,11 @@ public:
 		}
 		for (int i = 0; i < r; i++)
 		{
-			for (int j = i+1; j < r; j++)
+			for (int j = i + 1; j < r; j++)
 			{
 				if (first_set[i] > first_set[j])
 				{
-					cout << "Swap r" << i+1 << " and r" << j+1 << endl;
+					cout << "Swap r" << i + 1 << " and r" << j + 1 << endl;
 					Swap(i, j);
 					first_set[i] ^= first_set[j];
 					first_set[j] ^= first_set[i];
@@ -327,12 +329,12 @@ public:
 			for (int j = 0; j < c; j++)
 			{
 				base[i][j].Print();
-				//²¹¿Õ¸ñ
+				//Â²Â¹Â¿Ã•Â¸Ã±
 				for (int k = 0; k < cMax[j] - base[i][j].Length(); k++)
 				{
 					cout << " ";
 				}
-				cout << " ";
+				cout << "|";
 			}
 			cout << endl;
 		}
@@ -350,24 +352,26 @@ public:
 };
 int main()
 {
-	int r, c;
-	cout << "Input row(s) and column(s)" << endl;
-	cin >> r >> c;
-	Matrix m(r, c);
-	for (int i = 0; i < r; i++)
-	{
-		for (int j = 0; j < c; j++)
+	while (1) {
+		int r, c;
+		cout << "Input row(s) and column(s)" << endl;
+		cin >> r >> c;
+		Matrix m(r, c);
+		for (int i = 0; i < r; i++)
 		{
-			int t;
-			cin >> t;
-			m.base[i][j] = t;
+			for (int j = 0; j < c; j++)
+			{
+				int t;
+				cin >> t;
+				m.base[i][j] = t;
+			}
 		}
+		cout << endl;
+		m.Print();
+		cout << endl;
+		m.RowReduce();
+		m.Print();
 	}
-	cout << endl;
-	m.Print();
-	cout << endl;
-	m.RowReduce();
-	m.Print();
 	return 0;
 }
 /*
